@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Planner Fitness</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Meu Planner Fitness</h1>
+            <div class="date-display" id="currentDate"></div>
+        </header>
+
+        <main>
+            <!-- Seção de Peso -->
+            <section class="card weight-section">
+                <h2>⚖️ Controle de Peso</h2>
+                <div class="weight-input">
+                    <input type="date" id="weightDate" />
+                    <input type="number" id="weightValue" placeholder="Peso (kg)" step="0.1" min="0" />
+                    <button onclick="addWeight()">Adicionar</button>
+                </div>
+                <div class="weight-history" id="weightHistory"></div>
+            </section>
+
+            <!-- Seção de Treino -->
+            <section class="card workout-section">
+                <h2>💪 Treino do Dia</h2>
+                <div class="workout-input">
+                    <input type="date" id="workoutDate" />
+                    <select id="workoutType" onchange="showExerciseList()">
+                        <option value="">Selecione o tipo de treino</option>
+                        <option value="Peito">Peito</option>
+                        <option value="Costas">Costas</option>
+                        <option value="Pernas">Pernas</option>
+                        <option value="Ombros">Ombros</option>
+                        <option value="Braços">Braços</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Full Body">Full Body</option>
+                        <option value="Funcional">Funcional</option>
+                    </select>
+                    
+                    <div id="exerciseList" class="exercise-list" style="display: none;">
+                        <h4>Exercícios sugeridos:</h4>
+                        <div id="exerciseButtons" class="exercise-buttons"></div>
+                    </div>
+                    
+                    <textarea id="workoutExercises" placeholder="Exercícios realizados (ex: Supino 3x12, Flexão 3x15...)"></textarea>
+                    <button onclick="addWorkout()">Adicionar Treino</button>
+                </div>
+                <div class="workout-history" id="workoutHistory"></div>
+            </section>
+
+            <!-- Seção de Estudos -->
+            <section class="card study-section">
+                <h2>📚 Estudos do Dia</h2>
+                <div class="study-input">
+                    <input type="date" id="studyDate" />
+                    <select id="studySubject">
+                        <option value="">Selecione a matéria</option>
+                        <option value="Inglês">Inglês</option>
+                        <option value="Programação">Programação</option>
+                        <option value="Vídeos de Programação">Vídeos de Programação</option>
+                        <option value="YouTube">YouTube</option>
+                    </select>
+                    <textarea id="studyContent" placeholder="O que você aprendeu hoje?"></textarea>
+                    <div class="time-inputs">
+                        <div class="time-group">
+                            <label for="studyTime">Tempo estudando:</label>
+                            <input type="number" id="studyTime" placeholder="Minutos" min="0" />
+                        </div>
+                        <div class="time-group">
+                            <label for="wasteTime">Tempo perdido:</label>
+                            <input type="number" id="wasteTime" placeholder="Minutos" min="0" />
+                        </div>
+                        <!-- Adicionando campo para tipo de distração -->
+                        <div class="time-group">
+                            <label for="distractionType">Tipo de distração:</label>
+                            <select id="distractionType">
+                                <option value="">Selecione o tipo</option>
+                                <option value="YouTube">YouTube</option>
+                                <option value="Celular">Celular</option>
+                                <option value="Vídeos">Vídeos</option>
+                                <option value="Séries">Séries</option>
+                                <option value="Filmes">Filmes</option>
+                                <option value="Jogos">Jogos</option>
+                                <option value="TFT">TFT</option>
+                                <option value="Redes Sociais">Redes Sociais</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="addStudy()">Adicionar Estudo</button>
+                </div>
+                <div class="study-history" id="studyHistory"></div>
+            </section>
+
+            <!-- Seção de Atividades Diárias -->
+            <section class="card daily-section">
+                <h2>📝 Atividades do Dia</h2>
+                <div class="daily-input">
+                    <input type="date" id="dailyDate" />
+                    <textarea id="dailyActivities" placeholder="O que você fez hoje? (trabalho, estudos, lazer, etc.)"></textarea>
+                    <button onclick="addDailyActivity()">Salvar Atividades</button>
+                </div>
+                <div class="daily-history" id="dailyHistory"></div>
+            </section>
+        </main>
+
+        <!-- Modal para editar entradas -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h3 id="modalTitle">Editar</h3>
+                <div id="modalBody"></div>
+                <div class="modal-actions">
+                    <button onclick="saveEdit()">Salvar</button>
+                    <button onclick="closeModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

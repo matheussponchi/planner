@@ -1,0 +1,597 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.date-display {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+/* Seção de Peso */
+.weight-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.weight-input input,
+.weight-input button {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.weight-input button {
+  background: #667eea;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.weight-input button:hover {
+  background: #5a67d8;
+}
+
+.weight-history {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.weight-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #f8f9ff;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.weight-entry:hover {
+  background: #e6e8ff;
+}
+
+/* Seção de Treino */
+.workout-input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.workout-input input,
+.workout-input select,
+.workout-input textarea,
+.workout-input button {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.workout-input textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.workout-input button {
+  background: #48bb78;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.workout-input button:hover {
+  background: #38a169;
+}
+
+/* Adicionando estilos para a lista de exercícios */
+.exercise-list {
+  background: #f0fff4;
+  border: 2px solid #48bb78;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+.exercise-list h4 {
+  color: #2d3748;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.exercise-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.exercise-btn {
+  background: #48bb78;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.exercise-btn:hover {
+  background: #38a169;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
+}
+
+.exercise-btn:active {
+  transform: translateY(0);
+}
+
+.workout-history {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.workout-entry {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #f0fff4;
+  border-radius: 8px;
+  border-left: 4px solid #48bb78;
+}
+
+.workout-entry h4 {
+  color: #2d3748;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.workout-type {
+  background: #48bb78;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.workout-exercises {
+  color: #4a5568;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Adicionando estilos para a seção de estudos */
+/* Seção de Estudos */
+.study-section h2 {
+  border-bottom: 3px solid #9f7aea;
+}
+
+.study-input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.study-input input,
+.study-input select,
+.study-input textarea,
+.study-input button {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.study-input textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.study-input button {
+  background: #9f7aea;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.study-input button:hover {
+  background: #805ad5;
+}
+
+.time-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Adicionando suporte para 3 colunas quando há tipo de distração */
+.time-inputs.three-columns {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.time-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.time-group label {
+  font-size: 0.9rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.time-group input,
+.time-group select {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.study-history {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.study-item {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #faf5ff;
+  border-radius: 8px;
+  border-left: 4px solid #9f7aea;
+}
+
+.study-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.study-subject {
+  background: #9f7aea;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+.study-content {
+  color: #4a5568;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.study-times {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9rem;
+}
+
+.study-time {
+  color: #38a169;
+  font-weight: 500;
+}
+
+.waste-time {
+  color: #e53e3e;
+  font-weight: 500;
+}
+
+.item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: #e2e8f0;
+}
+
+.delete-btn:hover {
+  background: #fed7d7;
+}
+
+/* Seção de Atividades Diárias */
+.daily-input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.daily-input input,
+.daily-input textarea,
+.daily-input button {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.daily-input textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.daily-input button {
+  background: #ed8936;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.daily-input button:hover {
+  background: #dd6b20;
+}
+
+.daily-history {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.daily-entry {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #fffaf0;
+  border-radius: 8px;
+  border-left: 4px solid #ed8936;
+}
+
+.daily-entry h4 {
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.daily-activities {
+  color: #4a5568;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Botões de ação */
+.entry-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.btn-edit {
+  background: #4299e1;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #3182ce;
+}
+
+.btn-delete {
+  background: #f56565;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #e53e3e;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-actions button:first-child {
+  background: #48bb78;
+  color: white;
+}
+
+.modal-actions button:last-child {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main {
+    /* Em mobile mantém uma coluna */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .weight-input {
+    flex-direction: column;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  /* Responsividade para botões de exercícios em mobile */
+  .exercise-buttons {
+    justify-content: center;
+  }
+
+  .exercise-btn {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  /* Responsividade para seção de estudos */
+  .time-inputs {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Mantendo layout de coluna única em mobile mesmo com 3 campos */
+  .time-inputs.three-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .study-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .study-times {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a67d8;
+}
